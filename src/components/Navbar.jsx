@@ -1,15 +1,17 @@
-const Navbar = ({ setActiveComponent }) => {
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
   return (
     <div className="navbar">
       <div className="logo">
-        <h1 onClick={() => setActiveComponent("home")}>La Papaya Loca</h1>
+        <h1>La Papaya Loca</h1>
       </div>
       <div>
-        <button onClick={() => setActiveComponent("home")}>Home</button>
-        <button onClick={() => setActiveComponent("login")}>Login</button>
-        <button onClick={() => setActiveComponent("register")}>Register</button>
-        <button onClick={() => setActiveComponent("pizza")}>Pizza</button>
-        <button onClick={() => setActiveComponent("carrito")}><i className="fa-solid fa-cart-shopping"></i></button>
+        <Link  to="/"><button>Home</button></Link>
+        <Link to="/login"><button>Login</button></Link>
+        <Link to="/register"><button>Register</button></Link>
+        <Link to="/profile"><button>Profile</button></Link>
+        <Link to="/cart"><button><i className="fa-solid fa-cart-shopping"></i></button></Link>
       </div>
     </div>
   );

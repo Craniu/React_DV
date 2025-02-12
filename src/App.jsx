@@ -1,36 +1,29 @@
-import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Carrito from "./components/Cart"
-import Pizza from "./components/Pizza"
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Pizza from "./pages/Pizza";
+import Cart from "./pages/Cart"
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
-function App() {
-
-  const [activeComponent, setActiveComponent] = useState("home");
-  const loadComponent = () => {
-    switch (activeComponent) {
-      case "home":
-        return <Home />;
-      case "login":
-        return <Login />;
-      case "register":
-        return <Register />;
-      case "carrito":
-        return <Carrito />;
-        case "pizza":
-          return <Pizza />
-    }
-  };
+const App = () => {
 
   return (
     <div>
-      <Navbar setActiveComponent={setActiveComponent} />
-      {/* <Home /> */}
-      <main>{loadComponent()}</main>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/register" element={<Register />}/>
+        <Route path="/pizza/p001" element={<Pizza />}/>
+        <Route path="/profile" element={<Profile />}/>
+        <Route path="/*" element={<NotFound />}/>
+        <Route path="/cart" element={<Cart />}/>
+      </Routes>
       <Footer />
     </div>
   );
